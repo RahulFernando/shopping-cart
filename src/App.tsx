@@ -1,4 +1,4 @@
-import './App.css';
+import 'antd/dist/antd.css'
 import AppRoutes from './routes';
 
 function App() {

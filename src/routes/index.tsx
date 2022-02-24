@@ -5,18 +5,21 @@ import routes from './routes';
 
 // components
 import Loading from '../components/loading';
+import Layout from '../layouts';
 
 const AppRoutes: React.FC = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={<Loading />}>
-        <Switch>
-          {routes.map(
-            ({ isPrivate, ...props }, index) =>
-              !isPrivate && <Route key={index} {...props} />
-          )}
-        </Switch>
-      </Suspense>
+      <Layout>
+        <Suspense fallback={<Loading />}>
+          <Switch>
+            {routes.map(
+              ({ isPrivate, ...props }, index) =>
+                !isPrivate && <Route key={index} {...props} />
+            )}
+          </Switch>
+        </Suspense>
+      </Layout>
     </BrowserRouter>
   );
 };
