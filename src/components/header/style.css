@@ -1,0 +1,15 @@
+.header-search {
+  padding-top: 1rem;
+}
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+  background-color: transparent;
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+  background-color: transparent;
+}
+
+.ant-menu-dark .ant-menu-item-selected .anticon {
+  color: rgb(22, 22, 22);
+}
