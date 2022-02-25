@@ -18,3 +18,9 @@
 .ant-layout-content {
   min-height: 100vh;
 }
+
+/* clip loader */
+.clip-loader {
+  padding-top: 10rem;
+  margin: auto;
+}

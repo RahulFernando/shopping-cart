@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "example@gmail.com",
+      "phone_number": 77902309,
+      "password": "example"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Popcorn Veggie",
+      "description": "Delightful Popcorn Veggie made with carrots, mushrooms & potatoes accompanied by green chillies, onions & a layer of mozzarella & cream cheese, upon a sriracha & tomato sauce base.",
+      "img": "https://adminsc.pizzahut.lk//images/mainmenu/c0df52d3-d958-48a4-bddd-c0355d452a50.jpg",
+      "price": 550
+    },
+    {
+      "id": 2,
+      "name": "Devilled Chicken",
+      "description": "Devilled chicken in spicy sauce with a double layer of mozzarella cheese.",
+      "img": "https://adminsc.pizzahut.lk/images/mainmenu/devilledchickenbbc60b21e5d845da8c992780e0a35d62.jpg",
+      "price": 550
+    }
+  ]
+}
