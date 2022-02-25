@@ -12,3 +12,9 @@
   color: black;
   font-weight: 500;
 }
+
+/* content */
+
+.ant-layout-content {
+  min-height: 100vh;
+}
