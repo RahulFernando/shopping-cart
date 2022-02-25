@@ -1,20 +1,31 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from 'antd';
 
-// redux actions
-import { onClose } from '../../reducers/modal';
+type Props = {
+  title: string;
+  isVisible: boolean;
+  footer: Array<any>;
+  children: React.ReactNode;
+  onCancel: () => void;
+};
 
-const Container: React.FC = () => {
-  const dispatch = useDispatch();
-  const isVisible = useSelector((state: any) => state.modal.isVisible);
-
+const Container: React.FC<Props> = ({
+  title,
+  isVisible,
+  footer,
+  children,
+  onCancel,
+}) => {
   return (
     <Modal
-      title="Login"
+      className="login-form"
+      title={title}
       visible={isVisible}
-      onCancel={() => dispatch(onClose())}
-    ></Modal>
+      onCancel={onCancel}
+      footer={footer}
+    >
+      {children}
+    </Modal>
   );
 };
 
