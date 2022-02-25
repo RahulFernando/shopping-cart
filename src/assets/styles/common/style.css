@@ -1,0 +1,14 @@
+.login-form .form-input {
+  margin-bottom: 1rem;
+}
+
+.login-form .form-options {
+  margin: auto;
+  width: 35%;
+}
+
+.form-options span {
+  cursor: pointer;
+  color: black;
+  font-weight: 500;
+}
