@@ -21,3 +21,20 @@
   font-weight: 500;
   margin-left: 0.6rem;
 }
+
+.add-to-cart-btn {
+  background: #001529;
+  color: #fffff2;
+}
+
+.add-to-cart-btn:hover {
+  color: #001529;
+  background: #fffff2;
+  border-color: #001529;
+}
+
+.add-to-cart-btn:focus {
+  color: #001529;
+  background: #fffff2;
+  border-color: #001529;
+}

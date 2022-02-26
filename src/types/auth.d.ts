@@ -16,6 +16,7 @@ interface IAuthUser {
   email: string;
   phone_number: Number;
   password: string;
+  cart: [];
 }
 
 interface IRegister {
