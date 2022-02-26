@@ -4,4 +4,5 @@ interface IProductsReducer {
     data: any;
     error: any;
   };
+  searchKeyword: string;
 }
