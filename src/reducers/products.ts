@@ -11,6 +11,7 @@ const initialState = {
     data: null,
     error: null,
   },
+  selectedProduct: null,
   searchKeyword: '',
 };
 
@@ -80,6 +81,12 @@ const productSlice = createSlice({
         },
       };
     },
+    selectProduct(state, { payload }): any {
+      return {
+        ...state,
+        selectedProduct: payload,
+      };
+    },
   },
 });
 
@@ -93,6 +100,7 @@ export const {
   updateProduct,
   updateProductSuccess,
   updateProductFailure,
+  selectProduct,
 } = actions;
 
 export default reducer;

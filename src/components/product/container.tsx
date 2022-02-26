@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // context
@@ -11,6 +11,7 @@ import RatingModal from '../rating';
 
 // redux actions
 import { onIsRateOpen } from '../../reducers/modal';
+import { selectProduct } from '../../reducers/products';
 
 // styles
 import './style.css';
@@ -30,6 +31,12 @@ const Container: React.FC<Props> = ({ item }) => {
 
   const total: any = item.rating.reduce((avg: any, rate: Number) => avg + rate);
   const avg = total / item.rating.length;
+
+  const rateClickHandler = () => {
+    dispatch(selectProduct(item));
+    dispatch(onIsRateOpen());
+  };
+
   return (
     <>
       <Card cover={item.img}>
@@ -39,19 +46,19 @@ const Container: React.FC<Props> = ({ item }) => {
         </div>
         <div className="rating">
           <p>
-            Customer Rating <span className="avg-rate">{avg}</span>
+            Customer Rating <span className="avg-rate">{avg.toFixed(1)}</span>
           </p>
           {ctx.isLoggedIn && (
             <Button
               label="Rate"
               loading={false}
-              onClick={() => dispatch(onIsRateOpen())}
+              onClick={rateClickHandler}
               type={buttonHtmlTypes.button}
             />
           )}
         </div>
       </Card>
-      {isVisible && <RatingModal product={item} isVisible={isVisible} />}
+      {isVisible && <RatingModal />}
     </>
   );
 };

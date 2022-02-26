@@ -9,6 +9,7 @@ interface IProductsReducer {
     data: any;
     error: any;
   };
+  selectedProduct: any;
   searchKeyword: string;
 }
 

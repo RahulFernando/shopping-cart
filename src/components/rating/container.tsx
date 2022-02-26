@@ -14,38 +14,44 @@ import { onIsRateClose } from '../../reducers/modal';
 // enums
 import { buttonHtmlTypes } from '../../enum/ui';
 
-type Props = {
-  isVisible: boolean;
-  product: IProduct;
-};
-
-const Container: React.FC<Props> = ({ isVisible, product }) => {
+const Container: React.FC = () => {
   const dispatch = useDispatch();
 
   const loading = useSelector(
     (state: any) => state.products.ratingData.loading
   );
+  const product: IProduct = useSelector(
+    (state: any) => state.products.selectedProduct
+  );
+  const isVisible = useSelector((state: any) => state.modal.isRateVisible);
 
   const [form] = Form.useForm();
   const [rating, setRating] = useState(0);
+
+  console.log(product);
 
   const ratingHandler = (rating: number) => {
     setRating(rating);
   };
 
-  const submitFormHandler = () => {
-    const obj = {
-      ...product,
-      rating: [...product.rating, rating],
-    };
+  const closeModalHandler = () => {
+    dispatch(onIsRateClose());
+  };
 
-    dispatch(updateProduct(obj));
+  const submitFormHandler = () => {
+    if (product) {
+      const obj = {
+        ...product,
+        rating: [...product.rating, rating],
+      };
+      dispatch(updateProduct(obj));
+    }
   };
 
   return (
     <Modal
-      title="Rate this product"
-      onCancel={() => dispatch(onIsRateClose())}
+      title={product?.name || ''}
+      onCancel={closeModalHandler}
       isVisible={isVisible}
       footer={[
         <Button
