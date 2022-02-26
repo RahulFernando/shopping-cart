@@ -32,7 +32,7 @@ const Container: React.FC<Props> = ({ item }) => {
   const addToCartSuccess = useSelector(
     (state: any) => state.cart.addToCartData.data
   );
-  const cartData: Array<any> = useSelector(
+  const cartData: Array<IProductCart> = useSelector(
     (state: any) => state.cart.cartData.data
   );
 
@@ -46,10 +46,30 @@ const Container: React.FC<Props> = ({ item }) => {
   };
 
   const addToCartHandler = () => {
-    const obj: ICart = {
-      id: parseInt(ctx.id),
-      cart: [...cartData, item],
-    };
+    let obj: ICart;
+    let cart: Array<IProductCart> = [...cartData];
+    const index = cart.findIndex((product) => product.name === item.name);
+    if (index !== -1) {
+      console.log(index);
+      const cal = cart[index].count + 1;
+      const updated = { ...cart[index], count: cal };
+      cart[index] = updated;
+      obj = { id: parseInt(ctx.id), cart: cart };
+    } else {
+      obj = {
+        id: parseInt(ctx.id),
+        cart: [
+          ...cartData,
+          {
+            id: item.id,
+            name: item.name,
+            img: item.img,
+            count: 1,
+            price: item.price,
+          },
+        ],
+      };
+    }
     dispatch(addToCart(obj));
   };
 

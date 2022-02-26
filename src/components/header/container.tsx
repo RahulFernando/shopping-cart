@@ -8,6 +8,7 @@ import AuthContext from '../../context/auth.context';
 // redux actions
 import { onOpen } from '../../reducers/modal';
 import { setSearchKeyword } from '../../reducers/products';
+import { setCartVisibility } from '../../reducers/cart';
 
 // style
 import './style.css';
@@ -31,6 +32,10 @@ const Container = () => {
     dispatch(setSearchKeyword(event.target.value));
   };
 
+  const onCartItemClick = () => {
+    dispatch(setCartVisibility(true));
+  };
+
   return (
     <Header>
       <div className="logo" />
@@ -49,7 +54,7 @@ const Container = () => {
           </Menu.Item>
         )}
         {ctx.isLoggedIn && (
-          <Menu.Item>
+          <Menu.Item onClick={onCartItemClick}>
             <Badge count={cartData && cartData.length}>
               <ShoppingCartOutlined
                 style={{ fontSize: '28px', color: 'white' }}
