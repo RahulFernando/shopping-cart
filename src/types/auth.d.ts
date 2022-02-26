@@ -7,6 +7,8 @@ interface ILoginReducer {
 }
 
 interface IAuthUser {
+  id?: Number;
   email: string;
+  phone_number: Number;
   password: string;
 }

@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import queryString from 'query-string';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, FormInstance } from 'antd';
+import { Form } from 'antd';
+
+// context
+import AuthContext from '../../context/auth.context';
 
 // ui components
 import Modal from '../../components/modal';
@@ -58,9 +61,11 @@ const registerForm = [
 
 const Container = () => {
   const dispatch = useDispatch();
+  const ctx = useContext(AuthContext);
+
   const isVisible = useSelector((state: any) => state.modal.isVisible);
   const loginError = useSelector((state: any) => state.auth.loginData.error);
-  const loginData: Array<any> = useSelector(
+  const loginData: Array<IAuthUser> = useSelector(
     (state: any) => state.auth.loginData.data
   );
 
@@ -75,12 +80,19 @@ const Container = () => {
   const [form] = Form.useForm();
 
   useEffect(() => {
+    // if login unsuccessful
     if (loginData && loginData.length === 0) {
       dispatch(loginUserFailure('Invalid Login'));
 
       setTimeout(() => {
         dispatch(loginUserFailure(''));
       }, 2000);
+    }
+
+    // if login success
+    if (loginData && loginData.length > 0) {
+      ctx.onLogin(loginData[0].email);
+      dispatch(onClose());
     }
   }, [loginData]);
 
@@ -116,6 +128,7 @@ const Container = () => {
     });
   };
 
+  // handle form submit
   const submitFormHandler = () => {
     form
       .validateFields()
