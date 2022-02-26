@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import StarRating from 'react-svg-star-rating';
 import { Form } from 'antd';
@@ -28,8 +28,6 @@ const Container: React.FC = () => {
   const [form] = Form.useForm();
   const [rating, setRating] = useState(0);
 
-  console.log(product);
-
   const ratingHandler = (rating: number) => {
     setRating(rating);
   };
@@ -38,6 +36,7 @@ const Container: React.FC = () => {
     dispatch(onIsRateClose());
   };
 
+  // rate product handler
   const submitFormHandler = () => {
     if (product) {
       const obj = {

@@ -7,37 +7,35 @@ type Props = {
 
 const AuthProvider: React.FC<Props> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [email, setEmail] = useState('');
+  const [id, setId] = useState<string>('');
 
   const localStorageIsLoggedIn = localStorage.getItem('isLoggedIn');
-  const localStorageEmail = localStorage.getItem('email');
+  const localStorageId = localStorage.getItem('id');
 
   useEffect(() => {
     if (localStorageIsLoggedIn) {
       setIsLoggedIn(true);
     }
-    if (localStorageEmail) {
-      setEmail(localStorageEmail);
+    if (localStorageId) {
+      setId(localStorageId);
     }
-  }, [localStorageEmail, localStorageIsLoggedIn]);
+  }, [localStorageId, localStorageIsLoggedIn]);
 
-  const loginHandler = (email: string) => {
+  const loginHandler = (id: string) => {
     localStorage.setItem('isLoggedIn', '1');
-    localStorage.setItem('email', email);
-    setEmail(email);
+    localStorage.setItem('id', id);
     setIsLoggedIn(true);
   };
 
   const logoutHandler = () => {
     localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('email');
-    setEmail('');
+    localStorage.removeItem('id');
     setIsLoggedIn(false);
   };
 
   const context = {
     isLoggedIn: isLoggedIn,
-    email: email,
+    id: id,
     onLogin: loginHandler,
     onLogout: logoutHandler,
   };

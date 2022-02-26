@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // context
@@ -12,6 +12,7 @@ import RatingModal from '../rating';
 // redux actions
 import { onIsRateOpen } from '../../reducers/modal';
 import { selectProduct } from '../../reducers/products';
+import { addToCart } from '../../reducers/cart';
 
 // styles
 import './style.css';
@@ -32,14 +33,30 @@ const Container: React.FC<Props> = ({ item }) => {
   const total: any = item.rating.reduce((avg: any, rate: Number) => avg + rate);
   const avg = total / item.rating.length;
 
+  // rate click button handler
   const rateClickHandler = () => {
     dispatch(selectProduct(item));
     dispatch(onIsRateOpen());
   };
 
+  const addToCartHandler = () => {
+    const obj: ICart = { id: parseInt(ctx.id), cart: [item] };
+    dispatch(addToCart(obj));
+  };
+
+  const addToCartBtn = (
+    <Button
+      className="add-to-cart-btn"
+      label="Add To Cart"
+      loading={false}
+      onClick={addToCartHandler}
+      type={buttonHtmlTypes.button}
+    />
+  );
+
   return (
     <>
-      <Card cover={item.img}>
+      <Card cover={item.img} actions={[addToCartBtn]}>
         <div className="product">
           <h1>{item.name}</h1>
           <p className="price">{`Rs. ${item.price}`}</p>

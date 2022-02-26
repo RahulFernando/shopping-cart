@@ -94,7 +94,9 @@ const Container = () => {
 
     // if login success
     if (loginData && loginData.length > 0) {
-      ctx.onLogin(loginData[0].email);
+      if (loginData[0].id) {
+        ctx.onLogin(loginData[0].id.toString());
+      }
       dispatch(onClose());
     }
   }, [loginData]);
