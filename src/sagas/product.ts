@@ -10,14 +10,20 @@ function* fetchProduct({ payload }: any): any {
     const response = yield call(service.getProducts);
 
     if (response.status === 200) {
-      yield put({ type: productActions.fetchProductsSuccess.type, response });
+      yield put({
+        type: productActions.fetchProductsSuccess.type,
+        payload: response.data,
+      });
     } else {
-      yield put({ type: productActions.fetchProductsFailure.type, response });
+      yield put({
+        type: productActions.fetchProductsFailure.type,
+        payload: response.message,
+      });
     }
-  } catch (error) {
+  } catch (error: any) {
     yield put({
       type: productActions.fetchProductsFailure.type,
-      response: error,
+      response: error.message,
     });
   }
 }

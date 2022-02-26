@@ -1,7 +1,7 @@
 import api from '../helpers/api';
 
 const httpRequest = {
-    logUser: (data: any) => api.post('/users', data),
-}
+  logUser: (data: string) => api.get(`/users?${data}`),
+};
 
 export default httpRequest;

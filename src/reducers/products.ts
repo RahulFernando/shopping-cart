@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
   productData: {
@@ -15,29 +15,25 @@ const productSlice = createSlice({
     fetchProducts(state) {
       return { ...state, productData: { ...state.productData, loading: true } };
     },
-    fetchProductsSuccess(state, { response }: any) {
+    fetchProductsSuccess(state, { payload }: PayloadAction): IProductsReducer {
       return {
         ...state,
         productData: {
           ...state.productData,
           loading: false,
-          data: response.data,
+          data: payload,
           error: null,
         },
       };
     },
-    fetchProductsFailure(state, { response }: any) {
+    fetchProductsFailure(state, { payload }: PayloadAction): IProductsReducer {
       return {
         ...state,
         productData: {
           ...state.productData,
           loading: false,
           data: null,
-          error: response
-            ? response.data
-              ? response.data.message
-              : response.message
-            : null,
+          error: payload,
         },
       };
     },

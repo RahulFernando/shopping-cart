@@ -10,12 +10,21 @@ function* loginUser({ payload }: any): any {
     const response = yield call(service.logUser, payload);
 
     if (response.status === 200) {
-      yield put({ type: authActions.loginUserSuccess.type, response });
+      yield put({
+        type: authActions.loginUserSuccess.type,
+        payload: response.data,
+      });
     } else {
-      yield put({ type: authActions.loginUserFailure.type, response });
+      yield put({
+        type: authActions.loginUserFailure.type,
+        payload: response.message,
+      });
     }
-  } catch (error) {
-    yield put({ type: authActions.loginUserFailure.type, error });
+  } catch (error: any) {
+    yield put({
+      type: authActions.loginUserFailure.type,
+      payload: error.message,
+    });
   }
 }
 

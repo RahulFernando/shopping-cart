@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
   loginData: {
@@ -15,29 +15,25 @@ const authSlice = createSlice({
     loginUser(state, { payload }) {
       return { ...state, loginData: { ...state.loginData, loading: true } };
     },
-    loginUserSuccess(state, { payload }) {
+    loginUserSuccess(state, { payload }: PayloadAction): ILoginReducer {
       return {
         ...state,
         loginData: {
           ...state.loginData,
           loading: false,
-          data: payload.data,
+          data: payload,
           error: null,
         },
       };
     },
-    loginUserFailure(state, { payload }) {
+    loginUserFailure(state, { payload }): ILoginReducer {
       return {
         ...state,
         loginData: {
           ...state.loginData,
           loading: false,
           data: null,
-          error: payload
-            ? payload.data
-              ? payload.data.message
-              : payload.data
-            : null,
+          error: payload,
         },
       };
     },
