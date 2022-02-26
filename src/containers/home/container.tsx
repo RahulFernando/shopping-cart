@@ -7,6 +7,7 @@ import Product from '../../components/product';
 
 // redux actions
 import { fetchProducts } from '../../reducers/products';
+import { onIsRateClose } from '../../reducers/modal';
 
 // style
 import './style.css';
@@ -23,12 +24,22 @@ const Container: React.FC = () => {
   const loading: boolean = useSelector(
     (state: any) => state.products.productData.loading
   );
+  const ratingSuccess = useSelector(
+    (state: any) => state.products.ratingData.data
+  );
 
   const [productList, setProductList] = useState<Array<IProduct>>([]);
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
+  useEffect(() => {
+    if (ratingSuccess) {
+      dispatch(onIsRateClose());
+      dispatch(fetchProducts());
+    }
+  }, [ratingSuccess]);
 
   useEffect(() => {
     if (products && products.length > 0) {

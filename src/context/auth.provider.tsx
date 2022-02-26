@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AuthContext from './auth.context';
 
 type Props = {
@@ -8,6 +8,18 @@ type Props = {
 const AuthProvider: React.FC<Props> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState('');
+
+  const localStorageIsLoggedIn = localStorage.getItem('isLoggedIn');
+  const localStorageEmail = localStorage.getItem('email');
+
+  useEffect(() => {
+    if (localStorageIsLoggedIn) {
+      setIsLoggedIn(true);
+    }
+    if (localStorageEmail) {
+      setEmail(localStorageEmail);
+    }
+  }, [localStorageEmail, localStorageIsLoggedIn]);
 
   const loginHandler = (email: string) => {
     localStorage.setItem('isLoggedIn', '1');
