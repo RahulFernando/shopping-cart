@@ -14,6 +14,7 @@ import Button from '../../components/button';
 // redux actions
 import { onClose } from '../../reducers/modal';
 import { loginUser, loginUserFailure, registerUser } from '../../reducers/auth';
+import { fetchCart } from '../../reducers/cart';
 
 // enums
 import { buttonHtmlTypes } from '../../enum/ui';
@@ -96,6 +97,7 @@ const Container = () => {
     if (loginData && loginData.length > 0) {
       if (loginData[0].id) {
         ctx.onLogin(loginData[0].id.toString());
+        dispatch(fetchCart(loginData[0].id));
       }
       dispatch(onClose());
     }
@@ -152,7 +154,8 @@ const Container = () => {
         }
 
         if (!isLogin) {
-          dispatch(registerUser(values));
+          const obj: IAuthUser = { ...values, cart: [] };
+          dispatch(registerUser(obj));
           form.resetFields();
         }
       })

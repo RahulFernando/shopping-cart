@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // context
@@ -12,7 +12,7 @@ import RatingModal from '../rating';
 // redux actions
 import { onIsRateOpen } from '../../reducers/modal';
 import { selectProduct } from '../../reducers/products';
-import { addToCart } from '../../reducers/cart';
+import { addToCart, fetchCart } from '../../reducers/cart';
 
 // styles
 import './style.css';
@@ -29,6 +29,12 @@ const Container: React.FC<Props> = ({ item }) => {
   const dispatch = useDispatch();
 
   const isVisible = useSelector((state: any) => state.modal.isRateVisible);
+  const addToCartSuccess = useSelector(
+    (state: any) => state.cart.addToCartData.data
+  );
+  const cartData: Array<any> = useSelector(
+    (state: any) => state.cart.cartData.data
+  );
 
   const total: any = item.rating.reduce((avg: any, rate: Number) => avg + rate);
   const avg = total / item.rating.length;
@@ -40,9 +46,16 @@ const Container: React.FC<Props> = ({ item }) => {
   };
 
   const addToCartHandler = () => {
-    const obj: ICart = { id: parseInt(ctx.id), cart: [item] };
+    const obj: ICart = {
+      id: parseInt(ctx.id),
+      cart: [...cartData, item],
+    };
     dispatch(addToCart(obj));
   };
+
+  useEffect(() => {
+    dispatch(fetchCart(ctx.id));
+  }, [addToCartSuccess]);
 
   const addToCartBtn = (
     <Button

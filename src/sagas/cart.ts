@@ -35,7 +35,7 @@ function* fetchCart({ payload }: any): any {
     if (response.status === 200) {
       yield put({
         type: cartActions.fetchCartSuccess.type,
-        payload: response.data,
+        payload: response.data.cart,
       });
     } else {
       yield put({

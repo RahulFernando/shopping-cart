@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Layout, Menu, Input, Badge } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 
@@ -20,6 +20,9 @@ const Container = () => {
   const dispatch = useDispatch();
   const ctx = useContext(AuthContext);
 
+  const cartData: Array<any> = useSelector(
+    (state: any) => state.cart.cartData.data
+  );
   const loginClickHandler = () => {
     dispatch(onOpen());
   };
@@ -45,13 +48,15 @@ const Container = () => {
             Logout
           </Menu.Item>
         )}
-        <Menu.Item>
-          <Badge count={3}>
-            <ShoppingCartOutlined
-              style={{ fontSize: '28px', color: 'white' }}
-            />
-          </Badge>
-        </Menu.Item>
+        {ctx.isLoggedIn && (
+          <Menu.Item>
+            <Badge count={cartData && cartData.length}>
+              <ShoppingCartOutlined
+                style={{ fontSize: '28px', color: 'white' }}
+              />
+            </Badge>
+          </Menu.Item>
+        )}
       </Menu>
     </Header>
   );

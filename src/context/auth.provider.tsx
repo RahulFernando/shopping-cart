@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import AuthContext from './auth.context';
+
+// redux actions
+import { fetchCart } from '../reducers/cart';
 
 type Props = {
   children: React.ReactNode;
 };
 
 const AuthProvider: React.FC<Props> = ({ children }) => {
+  const dispatch = useDispatch();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [id, setId] = useState<string>('');
 
@@ -18,6 +23,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
     }
     if (localStorageId) {
       setId(localStorageId);
+      dispatch(fetchCart(localStorageId));
     }
   }, [localStorageId, localStorageIsLoggedIn]);
 
