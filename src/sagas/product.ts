@@ -28,6 +28,30 @@ function* fetchProduct({ payload }: any): any {
   }
 }
 
+function* updateProduct({ payload }: any): any {
+  try {
+    const response = yield call(service.updateProduct, payload);
+
+    if (response.status === 200) {
+      yield put({
+        type: productActions.updateProductSuccess.type,
+        payload: response.data,
+      });
+    } else {
+      yield put({
+        type: productActions.updateProductFailure.type,
+        payload: response.message,
+      });
+    }
+  } catch (error: any) {
+    yield put({
+      type: productActions.updateProductFailure.type,
+      response: error.message,
+    });
+  }
+}
+
 export default function* watchers() {
   yield takeEvery(productActions.fetchProducts.type, fetchProduct);
+  yield takeEvery(productActions.updateProduct.type, updateProduct);
 }

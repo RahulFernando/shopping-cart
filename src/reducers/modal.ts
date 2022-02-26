@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isVisible: false,
+  isRateVisible: false,
 };
 
 const authSlice = createSlice({
@@ -17,11 +18,17 @@ const authSlice = createSlice({
         isVisible: false,
       };
     },
+    onIsRateOpen(state) {
+      return { ...state, isRateVisible: true };
+    },
+    onIsRateClose(state) {
+      return { ...state, isRateVisible: false };
+    },
   },
 });
 
 const { actions, reducer } = authSlice;
 
-export const { onOpen, onClose } = actions;
+export const { onOpen, onClose, onIsRateOpen, onIsRateClose } = actions;
 
 export default reducer;

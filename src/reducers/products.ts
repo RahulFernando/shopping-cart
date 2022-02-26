@@ -6,6 +6,12 @@ const initialState = {
     data: null,
     error: null,
   },
+  ratingData: {
+    loading: false,
+    data: null,
+    error: null,
+  },
+  selectedProduct: null,
   searchKeyword: '',
 };
 
@@ -44,6 +50,43 @@ const productSlice = createSlice({
         searchKeyword: payload,
       };
     },
+    updateProduct(state, { payload }) {
+      return {
+        ...state,
+        ratingData: {
+          ...state.ratingData,
+          loading: true,
+        },
+      };
+    },
+    updateProductSuccess(state, { payload }: IProductUpdate): IProductsReducer {
+      return {
+        ...state,
+        ratingData: {
+          ...state.ratingData,
+          loading: false,
+          data: payload,
+          error: null,
+        },
+      };
+    },
+    updateProductFailure(state, { payload }): IProductsReducer {
+      return {
+        ...state,
+        ratingData: {
+          ...state.ratingData,
+          loading: false,
+          data: null,
+          error: payload,
+        },
+      };
+    },
+    selectProduct(state, { payload }): any {
+      return {
+        ...state,
+        selectedProduct: payload,
+      };
+    },
   },
 });
 
@@ -54,6 +97,10 @@ export const {
   fetchProductsSuccess,
   fetchProductsFailure,
   setSearchKeyword,
+  updateProduct,
+  updateProductSuccess,
+  updateProductFailure,
+  selectProduct,
 } = actions;
 
 export default reducer;
