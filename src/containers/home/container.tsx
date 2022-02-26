@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 // ui components
-import Card from '../../components/card';
+import Product from '../../components/product';
 
 // redux actions
 import { fetchProducts } from '../../reducers/products';
@@ -17,14 +17,14 @@ const Container: React.FC = () => {
   const products: Array<any> = useSelector(
     (state: any) => state.products.productData.data
   );
-  const searchKeyword: Array<any> = useSelector(
+  const searchKeyword: string = useSelector(
     (state: any) => state.products.searchKeyword
   );
   const loading: boolean = useSelector(
     (state: any) => state.products.productData.loading
   );
 
-  const [productList, setProductList] = useState<Array<any>>([]);
+  const [productList, setProductList] = useState<Array<IProduct>>([]);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -58,13 +58,12 @@ const Container: React.FC = () => {
 
   return (
     <Row style={{ rowGap: '10px' }}>
-      {productList.map((item, index) => (
-        <Col className="items-card">
-          <Card key={index} cover={item.img}>
-            <h1>{item.name}</h1>
-          </Card>
-        </Col>
-      ))}
+      {productList &&
+        productList.map((item, index) => (
+          <Col className="items-card">
+            <Product key={index} item={item} />
+          </Col>
+        ))}
       {loading && (
         <div className="clip-loader">
           <ClipLoader />
