@@ -6,6 +6,7 @@ const initialState = {
     data: null,
     error: null,
   },
+  searchKeyword: '',
 };
 
 const productSlice = createSlice({
@@ -37,12 +38,22 @@ const productSlice = createSlice({
         },
       };
     },
+    setSearchKeyword(state, { payload }: any): IProductsReducer {
+      return {
+        ...state,
+        searchKeyword: payload,
+      };
+    },
   },
 });
 
 const { actions, reducer } = productSlice;
 
-export const { fetchProducts, fetchProductsSuccess, fetchProductsFailure } =
-  actions;
+export const {
+  fetchProducts,
+  fetchProductsSuccess,
+  fetchProductsFailure,
+  setSearchKeyword,
+} = actions;
 
 export default reducer;

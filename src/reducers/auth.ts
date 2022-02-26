@@ -6,6 +6,11 @@ const initialState = {
     data: null,
     error: null,
   },
+  registerData: {
+    loading: false,
+    data: null,
+    error: null,
+  },
 };
 
 const authSlice = createSlice({
@@ -15,7 +20,7 @@ const authSlice = createSlice({
     loginUser(state, { payload }) {
       return { ...state, loginData: { ...state.loginData, loading: true } };
     },
-    loginUserSuccess(state, { payload }: PayloadAction): ILoginReducer {
+    loginUserSuccess(state, { payload }: PayloadAction): IAuthReducer {
       return {
         ...state,
         loginData: {
@@ -26,11 +31,42 @@ const authSlice = createSlice({
         },
       };
     },
-    loginUserFailure(state, { payload }): ILoginReducer {
+    loginUserFailure(state, { payload }): IAuthReducer {
       return {
         ...state,
         loginData: {
           ...state.loginData,
+          loading: false,
+          data: null,
+          error: payload,
+        },
+      };
+    },
+    registerUser(state, { payload }: IRegister): IAuthReducer {
+      return {
+        ...state,
+        registerData: {
+          ...state.registerData,
+          loading: true,
+        },
+      };
+    },
+    registerUserSuccess(state, { payload }: PayloadAction): IAuthReducer {
+      return {
+        ...state,
+        registerData: {
+          ...state.registerData,
+          loading: false,
+          data: payload,
+          error: null,
+        },
+      };
+    },
+    registerUserFailure(state, { payload }: PayloadAction): IAuthReducer {
+      return {
+        ...state,
+        registerData: {
+          ...state.registerData,
           loading: false,
           data: null,
           error: payload,
@@ -42,6 +78,13 @@ const authSlice = createSlice({
 
 const { actions, reducer } = authSlice;
 
-export const { loginUser, loginUserSuccess, loginUserFailure } = actions;
+export const {
+  loginUser,
+  loginUserSuccess,
+  loginUserFailure,
+  registerUser,
+  registerUserSuccess,
+  registerUserFailure,
+} = actions;
 
 export default reducer;
