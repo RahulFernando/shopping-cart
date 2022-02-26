@@ -5,6 +5,12 @@
       "email": "example@gmail.com",
       "phone_number": 77902309,
       "password": "example"
+    },
+    {
+      "email": "urbanrunes@gmail.com",
+      "tel": "0714302153",
+      "password": "urbanrunes",
+      "id": 2
     }
   ],
   "products": [

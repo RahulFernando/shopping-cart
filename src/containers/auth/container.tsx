@@ -13,7 +13,7 @@ import Button from '../../components/button';
 
 // redux actions
 import { onClose } from '../../reducers/modal';
-import { loginUser, loginUserFailure } from '../../reducers/auth';
+import { loginUser, loginUserFailure, registerUser } from '../../reducers/auth';
 
 // enums
 import { buttonHtmlTypes } from '../../enum/ui';
@@ -68,6 +68,9 @@ const Container = () => {
   const loginData: Array<IAuthUser> = useSelector(
     (state: any) => state.auth.loginData.data
   );
+  const registerData: IAuthUser = useSelector(
+    (state: any) => state.auth.registerData.data
+  );
 
   const [isLogin, setIsLogin] = useState(true);
   const [login, setLogin] = useState<any>({ email: '', password: '' });
@@ -95,6 +98,13 @@ const Container = () => {
       dispatch(onClose());
     }
   }, [loginData]);
+
+  useEffect(() => {
+    // if registration success
+    if (registerData) {
+      setIsLogin(true);
+    }
+  }, [registerData]);
 
   const optionClickHandler = () => {
     setIsLogin(!isLogin);
@@ -133,9 +143,16 @@ const Container = () => {
     form
       .validateFields()
       .then((values: any) => {
-        const params = queryString.stringify(values);
-        dispatch(loginUser(params));
-        form.resetFields();
+        if (isLogin) {
+          const params = queryString.stringify(values);
+          dispatch(loginUser(params));
+          form.resetFields();
+        }
+
+        if (!isLogin) {
+          dispatch(registerUser(values));
+          form.resetFields();
+        }
       })
       .catch((info: any) => {
         console.log('Validate Failed:', info);

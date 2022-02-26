@@ -25,8 +25,6 @@ const Container: React.FC = () => {
     dispatch(fetchProducts());
   }, []);
 
-  console.log(products);
-
   return (
     <Row style={{ rowGap: '10px' }}>
       {products &&

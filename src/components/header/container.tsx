@@ -1,19 +1,23 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Layout, Menu, Input, Badge } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 
+// context
+import AuthContext from '../../context/auth.context';
+
 // redux actions
-import { onClose, onOpen } from '../../reducers/modal';
+import { onOpen } from '../../reducers/modal';
 
 // style
 import './style.css';
+import { useContext } from 'react';
 
 const { Header } = Layout;
 const { Search } = Input;
 
 const Container = () => {
   const dispatch = useDispatch();
+  const ctx = useContext(AuthContext);
 
   const loginClickHandler = () => {
     dispatch(onOpen());
@@ -26,9 +30,16 @@ const Container = () => {
         <Menu.Item className="search-item">
           <Search className="header-search" />
         </Menu.Item>
-        <Menu.Item onClick={loginClickHandler} style={{ marginLeft: 'auto' }}>
-          Login
-        </Menu.Item>
+        {!ctx.isLoggedIn && (
+          <Menu.Item onClick={loginClickHandler} style={{ marginLeft: 'auto' }}>
+            Login
+          </Menu.Item>
+        )}
+        {ctx.isLoggedIn && (
+          <Menu.Item onClick={ctx.onLogout} style={{ marginLeft: 'auto' }}>
+            Logout
+          </Menu.Item>
+        )}
         <Menu.Item>
           <Badge count={3}>
             <ShoppingCartOutlined
