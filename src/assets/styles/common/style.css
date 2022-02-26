@@ -13,8 +13,23 @@
   font-weight: 500;
 }
 
+.login-form .form-actions {
+  margin: auto;
+  width: 20%;
+}
+
 /* content */
 
 .ant-layout-content {
   min-height: 100vh;
+}
+
+/* clip loader */
+.clip-loader {
+  padding-top: 10rem;
+  margin: auto;
+}
+
+.error-text {
+  color: red;
 }

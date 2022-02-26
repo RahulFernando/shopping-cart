@@ -1,15 +1,17 @@
 import React from 'react';
 import { Button } from 'antd';
+import { buttonHtmlTypes } from '../../enum/ui';
 
 type Props = {
   loading: boolean;
   label: string;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  type: buttonHtmlTypes;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const Container: React.FC<Props> = ({ label, loading, onClick }) => {
+const Container: React.FC<Props> = ({ label, loading, type, onClick }) => {
   return (
-    <Button loading={loading} onClick={onClick}>
+    <Button loading={loading} htmlType={type} onClick={onClick}>
       {label}
     </Button>
   );
