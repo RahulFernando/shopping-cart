@@ -2,6 +2,7 @@
   padding: 0.5rem;
   border: 1px solid #dddddd;
   border-radius: 10px;
+  margin-bottom: 0.5rem;
 }
 
 .cart-item {
@@ -28,6 +29,10 @@ p {
 
 .item-count {
   margin: auto 0% auto 30%;
+}
+
+.total-amount {
+  padding-bottom: 0.5rem;
 }
 
 .total-amount p {
