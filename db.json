@@ -11,7 +11,22 @@
       "email": "urbanrunes@gmail.com",
       "tel": "0715342012",
       "password": "urbanrunes",
-      "cart": [],
+      "cart": [
+        {
+          "id": 4,
+          "name": "Tandoori Chicken",
+          "img": "https://adminsc.pizzahut.lk/images/mainmenu/tandoorichicken6e230d2bdcfa48f6ba332fb92025556a.jpg",
+          "count": 1,
+          "price": 550
+        },
+        {
+          "id": 3,
+          "name": "Cheese Lovers",
+          "img": "https://adminsc.pizzahut.lk/images/mainmenu/cheeselovers8af791bb96d1465aa31f4cb22d642068.jpg",
+          "count": 1,
+          "price": 550
+        }
+      ],
       "id": 2
     }
   ],
