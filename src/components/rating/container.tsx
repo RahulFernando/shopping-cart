@@ -28,10 +28,12 @@ const Container: React.FC = () => {
   const [form] = Form.useForm();
   const [rating, setRating] = useState(0);
 
+  // rating handler
   const ratingHandler = (rating: number) => {
     setRating(rating);
   };
 
+  // modal close handler
   const closeModalHandler = () => {
     dispatch(onIsRateClose());
   };

@@ -9,29 +9,22 @@
     },
     {
       "email": "urbanrunes@gmail.com",
-      "tel": "0714302153",
+      "tel": "0715342012",
       "password": "urbanrunes",
       "cart": [
+        {
+          "id": 4,
+          "name": "Tandoori Chicken",
+          "img": "https://adminsc.pizzahut.lk/images/mainmenu/tandoorichicken6e230d2bdcfa48f6ba332fb92025556a.jpg",
+          "count": 1,
+          "price": 550
+        },
         {
           "id": 3,
           "name": "Cheese Lovers",
           "img": "https://adminsc.pizzahut.lk/images/mainmenu/cheeselovers8af791bb96d1465aa31f4cb22d642068.jpg",
-          "count": 3,
-          "price": 550
-        },
-        {
-          "id": 10,
-          "name": "Butter Chicken Masala",
-          "img": "https://adminsc.pizzahut.lk/images/mainmenu/butterchickenmasalacc59d2fca0014933a61780819c410632.jpg",
           "count": 1,
-          "price": 610
-        },
-        {
-          "id": 7,
-          "name": "Sri Lankan Spicy Chicken Pizza",
-          "img": "https://adminsc.pizzahut.lk//images/mainmenu/eba5d955-72e6-456d-91d5-18a67ee09f2b.jpg",
-          "count": 2,
-          "price": 610
+          "price": 550
         }
       ],
       "id": 2
@@ -44,14 +37,7 @@
       "description": "Delightful Popcorn Veggie made with carrots, mushrooms & potatoes accompanied by green chillies, onions & a layer of mozzarella & cream cheese, upon a sriracha & tomato sauce base.",
       "img": "https://adminsc.pizzahut.lk//images/mainmenu/c0df52d3-d958-48a4-bddd-c0355d452a50.jpg",
       "price": 550,
-      "rating": [
-        3,
-        4,
-        3,
-        2,
-        3,
-        4
-      ]
+      "rating": [3, 4, 3, 2, 3, 4, 5]
     },
     {
       "id": 2,
@@ -59,13 +45,7 @@
       "description": "Devilled chicken in spicy sauce with a double layer of mozzarella cheese.",
       "img": "https://adminsc.pizzahut.lk/images/mainmenu/devilledchickenbbc60b21e5d845da8c992780e0a35d62.jpg",
       "price": 550,
-      "rating": [
-        2,
-        3,
-        2,
-        3,
-        3
-      ]
+      "rating": [2, 3, 2, 3, 3]
     },
     {
       "id": 3,
@@ -73,14 +53,7 @@
       "description": "Rich tomato sauce with a triple layer of mozzarella cheese.",
       "img": "https://adminsc.pizzahut.lk/images/mainmenu/cheeselovers8af791bb96d1465aa31f4cb22d642068.jpg",
       "price": 550,
-      "rating": [
-        3,
-        4,
-        2,
-        3,
-        3,
-        3
-      ]
+      "rating": [3, 4, 2, 3, 3, 3]
     },
     {
       "id": 4,
@@ -88,13 +61,7 @@
       "description": "Tandoori chicken & onions with a double layer of mozzarella cheese.",
       "img": "https://adminsc.pizzahut.lk/images/mainmenu/tandoorichicken6e230d2bdcfa48f6ba332fb92025556a.jpg",
       "price": 550,
-      "rating": [
-        3,
-        3,
-        4,
-        2,
-        3
-      ]
+      "rating": [3, 3, 4, 2, 3]
     },
     {
       "id": 5,
@@ -102,14 +69,7 @@
       "description": "Chicken sausages & onions with a double layer of mozzarella cheese.",
       "img": "https://adminsc.pizzahut.lk/images/mainmenu/sausagedelight215a65620c394005a3730121f69ebe64.jpg",
       "price": 550,
-      "rating": [
-        3,
-        3,
-        4,
-        2,
-        3,
-        4
-      ]
+      "rating": [3, 3, 4, 2, 3, 4]
     },
     {
       "id": 6,
@@ -117,15 +77,7 @@
       "description": "Flavoursome pieces of black chicken and crunchy onion with a double layer of mozzarella cheese.",
       "img": "https://adminsc.pizzahut.lk/images/mainmenu/sausagedelight215a65620c394005a3730121f69ebe64.jpg",
       "price": 550,
-      "rating": [
-        3,
-        3,
-        4,
-        2,
-        3,
-        4,
-        2
-      ]
+      "rating": [3, 3, 4, 2, 3, 4, 2]
     },
     {
       "id": 7,
@@ -133,13 +85,7 @@
       "description": "A combination of black chicken, devilled chicken & kotchchi chicken sausage meat, accompanied by nai miris, garlic & onion with a double layer of mozzarella cheese.",
       "img": "https://adminsc.pizzahut.lk//images/mainmenu/eba5d955-72e6-456d-91d5-18a67ee09f2b.jpg",
       "price": 610,
-      "rating": [
-        4,
-        4,
-        3,
-        2,
-        3
-      ]
+      "rating": [4, 4, 3, 2, 3]
     },
     {
       "id": 8,
@@ -147,14 +93,7 @@
       "description": "Flavoursome popcorn chicken accompanied with crunchy onion and green chilli with delicious mozzarella and cream cheese, upon a sriracha and tomato sauce base.",
       "img": "https://adminsc.pizzahut.lk//images/mainmenu/dc4292df-0d39-4caa-8998-0db2a2ea6d78.jpg",
       "price": 610,
-      "rating": [
-        4,
-        4,
-        3,
-        2,
-        3,
-        3
-      ]
+      "rating": [4, 4, 3, 2, 3, 3]
     },
     {
       "id": 9,
@@ -162,15 +101,7 @@
       "description": "Spicy veggie masala & paneer accompanied with pineapple, topped with a double layer of mozzarella cheese",
       "img": "https://adminsc.pizzahut.lk//images/mainmenu/e12644fa-8ecf-4fbe-beb7-abd5c08074f0.jpg",
       "price": 610,
-      "rating": [
-        4,
-        4,
-        3,
-        2,
-        3,
-        3,
-        4
-      ]
+      "rating": [4, 4, 3, 2, 3, 3, 4]
     },
     {
       "id": 10,
@@ -178,16 +109,7 @@
       "description": "The ever famous Butter Masala Chicken together with a layer of cream cheese, fresh onions, coriander, ginger and garlic, blanketed with a layer of mozzarella cheese.",
       "img": "https://adminsc.pizzahut.lk/images/mainmenu/butterchickenmasalacc59d2fca0014933a61780819c410632.jpg",
       "price": 610,
-      "rating": [
-        4,
-        2,
-        3,
-        2,
-        2,
-        3,
-        4,
-        2
-      ]
+      "rating": [4, 2, 3, 2, 2, 3, 4, 2]
     },
     {
       "id": 11,
@@ -195,15 +117,7 @@
       "description": "A combination of BBQ chicken, chicken bacon, chicken sausage & an all new roast chicken, accompanied with the freshest green pepper, mushroom, onion and green chilli, blanketed with delicious mozzarella cheese.",
       "img": "https://adminsc.pizzahut.lk//images/mainmenu/f82d044a-52e3-4519-863b-6be3a39bcd25.jpg",
       "price": 660,
-      "rating": [
-        4,
-        2,
-        2,
-        2,
-        3,
-        4,
-        2
-      ]
+      "rating": [4, 2, 2, 2, 3, 4, 2]
     },
     {
       "id": 12,
@@ -211,15 +125,58 @@
       "description": "Hot butter cuttlefish with chili flakes and butter accompanied by spring onion and capsicum with a double layer of mozzarella cheese.",
       "img": "https://adminsc.pizzahut.lk/images/mainmenu/hotbuttercuttlefish56caf5e4035b46328920b24fed527a6d.jpg",
       "price": 660,
-      "rating": [
-        4,
-        4,
-        4,
-        2,
-        3,
-        4,
-        2
-      ]
+      "rating": [4, 4, 4, 2, 3, 4, 2]
+    }
+  ],
+  "purchases": [
+    {
+      "userId": 2,
+      "items": [
+        {
+          "id": 1,
+          "name": "Popcorn Veggie",
+          "img": "https://adminsc.pizzahut.lk//images/mainmenu/c0df52d3-d958-48a4-bddd-c0355d452a50.jpg",
+          "count": 2,
+          "price": 550
+        },
+        {
+          "id": 10,
+          "name": "Butter Chicken Masala",
+          "img": "https://adminsc.pizzahut.lk/images/mainmenu/butterchickenmasalacc59d2fca0014933a61780819c410632.jpg",
+          "count": 1,
+          "price": 610
+        }
+      ],
+      "total": 1710,
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "items": [
+        {
+          "id": 7,
+          "name": "Sri Lankan Spicy Chicken Pizza",
+          "img": "https://adminsc.pizzahut.lk//images/mainmenu/eba5d955-72e6-456d-91d5-18a67ee09f2b.jpg",
+          "count": 1,
+          "price": 610
+        },
+        {
+          "id": 6,
+          "name": "Black Chicken",
+          "img": "https://adminsc.pizzahut.lk/images/mainmenu/sausagedelight215a65620c394005a3730121f69ebe64.jpg",
+          "count": 1,
+          "price": 550
+        },
+        {
+          "id": 8,
+          "name": "Popcorn Chicken Pizza",
+          "img": "https://adminsc.pizzahut.lk//images/mainmenu/dc4292df-0d39-4caa-8998-0db2a2ea6d78.jpg",
+          "count": 1,
+          "price": 610
+        }
+      ],
+      "total": 1770,
+      "id": 2
     }
   ]
 }

@@ -110,6 +110,7 @@ const Container = () => {
     }
   }, [registerData]);
 
+  // option click handler
   const optionClickHandler = () => {
     setIsLogin(!isLogin);
   };

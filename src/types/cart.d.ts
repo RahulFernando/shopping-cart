@@ -9,6 +9,16 @@ interface ICartReducer {
     data: any;
     error: any;
   };
+  purchaseData: {
+    loading: boolean;
+    data: any;
+    error: any;
+  };
+  removeCartItems: {
+    loading: boolean;
+    data: any;
+    error: any;
+  };
   isVisible: boolean;
 }
 

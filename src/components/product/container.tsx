@@ -28,7 +28,6 @@ const Container: React.FC<Props> = ({ item }) => {
   const ctx = useContext(AuthContext);
   const dispatch = useDispatch();
 
-  const isVisible = useSelector((state: any) => state.modal.isRateVisible);
   const addToCartSuccess = useSelector(
     (state: any) => state.cart.addToCartData.data
   );
@@ -45,13 +44,15 @@ const Container: React.FC<Props> = ({ item }) => {
     dispatch(onIsRateOpen());
   };
 
+  // add items to cart handler
   const addToCartHandler = () => {
+    // check user login
     if (ctx.isLoggedIn) {
       let obj: ICart;
       let cart: Array<IProductCart> = [...cartData];
-      const index = cart.findIndex((product) => product.name === item.name);
+      const index = cart.findIndex((product) => product.name === item.name); // find index
+      // if not found
       if (index !== -1) {
-        console.log(index);
         const cal = cart[index].count + 1;
         const updated = { ...cart[index], count: cal };
         cart[index] = updated;
@@ -92,28 +93,26 @@ const Container: React.FC<Props> = ({ item }) => {
   );
 
   return (
-    <>
-      <Card cover={item.img} actions={[addToCartBtn]}>
-        <div className="product">
-          <h1>{item.name}</h1>
-          <p className="price">{`Rs. ${item.price}`}</p>
-        </div>
-        <div className="rating">
-          <p>
-            Customer Rating <span className="avg-rate">{avg.toFixed(1)}</span>
-          </p>
-          {ctx.isLoggedIn && (
-            <Button
-              label="Rate"
-              loading={false}
-              onClick={rateClickHandler}
-              type={buttonHtmlTypes.button}
-            />
-          )}
-        </div>
-      </Card>
-      {isVisible && <RatingModal />}
-    </>
+    <Card cover={item.img} actions={[addToCartBtn]}>
+      <div className="product">
+        <h3>{item.name}</h3>
+        <p className="price">{`${item.price} LKR`}</p>
+      </div>
+      <div className="rating">
+        <p>
+          Rating: <span className="avg-rate">{`${avg.toFixed(1)}/5`}</span>
+        </p>
+        {ctx.isLoggedIn && (
+          <Button
+            className="rate-btn"
+            label="Rate"
+            loading={false}
+            onClick={rateClickHandler}
+            type={buttonHtmlTypes.button}
+          />
+        )}
+      </div>
+    </Card>
   );
 };
 

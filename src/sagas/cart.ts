@@ -51,7 +51,55 @@ function* fetchCart({ payload }: any): any {
   }
 }
 
+function* purchaseItems({ payload }: any): any {
+  try {
+    const response = yield call(service.postPurchase, payload);
+
+    if (response.status === 201) {
+      yield put({
+        type: cartActions.purchaseItemsSuccess.type,
+        payload: response.data,
+      });
+    } else {
+      yield put({
+        type: cartActions.purchaseItemsFailure.type,
+        payload: response.message,
+      });
+    }
+  } catch (error: any) {
+    yield put({
+      type: cartActions.purchaseItemsFailure.type,
+      payload: error.message,
+    });
+  }
+}
+
+function* removeCartItems({ payload }: any): any {
+  try {
+    const response = yield call(service.patchCart, payload);
+
+    if (response.status === 200) {
+      yield put({
+        type: cartActions.removeCartItemsSuccess.type,
+        payload: response.data,
+      });
+    } else {
+      yield put({
+        type: cartActions.removeCartItemsFailure.type,
+        payload: response.message,
+      });
+    }
+  } catch (error: any) {
+    yield put({
+      type: cartActions.removeCartItemsFailure.type,
+      payload: error.message,
+    });
+  }
+}
+
 export default function* watchers() {
   yield takeEvery(cartActions.addToCart.type, addToCart);
+  yield takeEvery(cartActions.purchaseItems.type, purchaseItems);
   yield takeEvery(cartActions.fetchCart.type, fetchCart);
+  yield takeEvery(cartActions.removeCartItems.type, removeCartItems);
 }

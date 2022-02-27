@@ -11,6 +11,16 @@ const initialState = {
     data: null,
     error: null,
   },
+  purchaseData: {
+    loading: false,
+    data: null,
+    error: null,
+  },
+  removeCartItems: {
+    loading: false,
+    data: null,
+    error: null,
+  },
   isVisible: false,
 };
 
@@ -77,6 +87,62 @@ const cartSlice = createSlice({
         isVisible: payload,
       };
     },
+    purchaseItems(state, { payload }): ICartReducer {
+      return {
+        ...state,
+        purchaseData: { ...state.purchaseData, loading: true },
+      };
+    },
+    purchaseItemsSuccess(state, { payload }: PayloadAction): ICartReducer {
+      return {
+        ...state,
+        purchaseData: {
+          ...state.purchaseData,
+          loading: false,
+          data: payload,
+          error: null,
+        },
+      };
+    },
+    purchaseItemsFailure(state, { payload }: PayloadAction): ICartReducer {
+      return {
+        ...state,
+        purchaseData: {
+          ...state.purchaseData,
+          loading: false,
+          data: null,
+          error: payload,
+        },
+      };
+    },
+    removeCartItems(state, { payload }): ICartReducer {
+      return {
+        ...state,
+        removeCartItems: { ...state.removeCartItems, loading: true },
+      };
+    },
+    removeCartItemsSuccess(state, { payload }: PayloadAction): ICartReducer {
+      return {
+        ...state,
+        removeCartItems: {
+          ...state.removeCartItems,
+          loading: false,
+          data: payload,
+          error: null,
+        },
+      };
+    },
+    removeCartItemsFailure(state, { payload }: PayloadAction): ICartReducer {
+      return {
+        ...state,
+        removeCartItems: {
+          ...state.removeCartItems,
+          loading: false,
+          data: null,
+          error: payload,
+        },
+      };
+    },
   },
 });
 
@@ -90,6 +156,12 @@ export const {
   fetchCartSuccess,
   fetchCartFailure,
   setCartVisibility,
+  purchaseItems,
+  purchaseItemsSuccess,
+  purchaseItemsFailure,
+  removeCartItems,
+  removeCartItemsSuccess,
+  removeCartItemsFailure,
 } = actions;
 
 export default reducer;
