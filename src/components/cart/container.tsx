@@ -27,14 +27,17 @@ const Container = () => {
   useEffect(() => {
     if (cartData) {
       let arr: Array<number> = [];
+      let total = 0.0;
       cartData.forEach((item) => {
         const price: number = parseInt(`${item.price}`);
         arr.push(price * item.count);
       });
 
-      const total = arr.reduce((total, price) => {
-        return total + price;
-      });
+      if (arr.length > 0) {
+        total = arr.reduce((total, price) => {
+          return total + price;
+        });
+      }
 
       setTotalAmount(total);
     }
