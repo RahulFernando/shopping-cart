@@ -28,7 +28,6 @@ const Container: React.FC<Props> = ({ item }) => {
   const ctx = useContext(AuthContext);
   const dispatch = useDispatch();
 
-  const isVisible = useSelector((state: any) => state.modal.isRateVisible);
   const addToCartSuccess = useSelector(
     (state: any) => state.cart.addToCartData.data
   );
@@ -92,28 +91,25 @@ const Container: React.FC<Props> = ({ item }) => {
   );
 
   return (
-    <>
-      <Card cover={item.img} actions={[addToCartBtn]}>
-        <div className="product">
-          <h1>{item.name}</h1>
-          <p className="price">{`Rs. ${item.price}`}</p>
-        </div>
-        <div className="rating">
-          <p>
-            Customer Rating <span className="avg-rate">{avg.toFixed(1)}</span>
-          </p>
-          {ctx.isLoggedIn && (
-            <Button
-              label="Rate"
-              loading={false}
-              onClick={rateClickHandler}
-              type={buttonHtmlTypes.button}
-            />
-          )}
-        </div>
-      </Card>
-      {isVisible && <RatingModal />}
-    </>
+    <Card cover={item.img} actions={[addToCartBtn]}>
+      <div className="product">
+        <h1>{item.name}</h1>
+        <p className="price">{`Rs. ${item.price}`}</p>
+      </div>
+      <div className="rating">
+        <p>
+          Customer Rating <span className="avg-rate">{avg.toFixed(1)}</span>
+        </p>
+        {ctx.isLoggedIn && (
+          <Button
+            label="Rate"
+            loading={false}
+            onClick={rateClickHandler}
+            type={buttonHtmlTypes.button}
+          />
+        )}
+      </div>
+    </Card>
   );
 };
 
