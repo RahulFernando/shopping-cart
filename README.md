@@ -1,10 +1,22 @@
-# Getting Started with Create React App
+# SHOPPING CART
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was create from React 17.0.2
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn install`
+
+Install all the node modules required
+
+### `json-server -p 4000 --watch db.json`
+
+Runs this command on root director where db.json file located.
+This will run Mock API.
+users api [http://localhost:4000/users]
+products api [http://localhost:4000/products]
+purchases api [http://localhost:4000/purchases]
 
 ### `yarn start`
 
