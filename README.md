@@ -14,9 +14,9 @@ Install all the node modules required
 
 Runs this command on root director where db.json file located.
 This will run Mock API.
-users api [http://localhost:4000/users]
-products api [http://localhost:4000/products]
-purchases api [http://localhost:4000/purchases]
+users api [http://localhost:4000/users](http://localhost:4000/users)
+products api [http://localhost:4000/products](http://localhost:4000/products)
+purchases api [http://localhost:4000/purchases](http://localhost:4000/purchases)
 
 ### `yarn start` or `npm start`
 
