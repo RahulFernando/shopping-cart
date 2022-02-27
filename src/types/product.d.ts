@@ -22,6 +22,14 @@ interface IProduct {
   rating: Array<Number>;
 }
 
+interface IProductCart {
+  id: Number;
+  name: string;
+  price: Number;
+  img: string;
+  count: number;
+}
+
 interface IProductUpdate {
   payload: IProduct;
 }

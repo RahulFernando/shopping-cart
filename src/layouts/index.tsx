@@ -4,6 +4,7 @@ import { Layout } from 'antd';
 // components
 import AppHeader from '../components/header';
 import AuthModal from '../containers/auth';
+import CartModal from '../components/cart';
 
 const { Content } = Layout;
 
@@ -17,6 +18,7 @@ const AppLayout: React.FC<Props> = ({ children }) => {
       <AppHeader />
       <Content>
         <AuthModal />
+        <CartModal />
         {children}
       </Content>
     </Layout>

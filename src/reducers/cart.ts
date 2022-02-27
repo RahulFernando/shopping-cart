@@ -11,6 +11,7 @@ const initialState = {
     data: null,
     error: null,
   },
+  isVisible: false,
 };
 
 const cartSlice = createSlice({
@@ -70,6 +71,12 @@ const cartSlice = createSlice({
         },
       };
     },
+    setCartVisibility(state, { payload }): ICartReducer {
+      return {
+        ...state,
+        isVisible: payload,
+      };
+    },
   },
 });
 
@@ -82,6 +89,7 @@ export const {
   fetchCart,
   fetchCartSuccess,
   fetchCartFailure,
+  setCartVisibility,
 } = actions;
 
 export default reducer;

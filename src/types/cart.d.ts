@@ -9,9 +9,10 @@ interface ICartReducer {
     data: any;
     error: any;
   };
+  isVisible: boolean;
 }
 
 interface ICart {
-  id?: number;
-  cart: Array<IProduct>;
+  id?: Number;
+  cart: Array<IProductCart>;
 }
