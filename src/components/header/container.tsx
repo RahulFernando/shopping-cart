@@ -24,14 +24,18 @@ const Container = () => {
   const cartData: Array<any> = useSelector(
     (state: any) => state.cart.cartData.data
   );
+
+  // login click handler
   const loginClickHandler = () => {
     dispatch(onOpen());
   };
 
+  // search keyword change handler
   const searchHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchKeyword(event.target.value));
   };
 
+  // cart icon click handler
   const onCartItemClick = () => {
     dispatch(setCartVisibility(true));
   };

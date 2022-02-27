@@ -44,13 +44,15 @@ const Container: React.FC<Props> = ({ item }) => {
     dispatch(onIsRateOpen());
   };
 
+  // add items to cart handler
   const addToCartHandler = () => {
+    // check user login
     if (ctx.isLoggedIn) {
       let obj: ICart;
       let cart: Array<IProductCart> = [...cartData];
-      const index = cart.findIndex((product) => product.name === item.name);
+      const index = cart.findIndex((product) => product.name === item.name); // find index
+      // if not found
       if (index !== -1) {
-        console.log(index);
         const cal = cart[index].count + 1;
         const updated = { ...cart[index], count: cal };
         cart[index] = updated;

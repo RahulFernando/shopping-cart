@@ -38,6 +38,7 @@ const Container = () => {
 
   const [totalAmount, setTotalAmount] = useState<Number>(0);
 
+  // cart close handler
   const onCartClose = () => {
     dispatch(setCartVisibility(false));
   };
